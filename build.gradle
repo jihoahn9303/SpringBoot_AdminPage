@@ -1,0 +1,39 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.5.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('mysql:mysql-connector-java')
+
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-web-services'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude  group: 'junit', module: 'junit-vintage-engine'
+    }
+    // https://mvnrepository.com/artifact/org.testng/testng
+    testCompile group: 'org.testng', name: 'testng', version: '6.9.6'
+
+    testCompile 'org.junit.jupiter:junit-jupiter-params:5.4.2'
+    testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
+    testCompile 'org.junit.vintage:junit-vintage-engine:5.4.2'
+}
+
+test {
+    useJUnitPlatform()
+}
